@@ -1,0 +1,81 @@
+/* ==========================================================
+   Base: fuentes, variables, reset y tipografía
+   ========================================================== */
+
+@font-face {
+  font-family: "Archivo";
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/archivo-latin-400-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Archivo";
+  font-weight: 800;
+  font-display: swap;
+  src: url("/fonts/archivo-latin-800-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/jetbrains-mono-latin-400-normal.woff2") format("woff2");
+}
+
+:root {
+  /* color */
+  --fondo: #070B10;
+  --fondo-seccion: #0B1118;
+  --texto: #EEF2F6;
+  --tenue: #8D9DB1;
+  --ambar: #FFB04A;
+  --linea: rgba(238, 242, 246, 0.12);
+
+  /* tipografía */
+  --sans: "Archivo", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, monospace;
+
+  /* medidas */
+  --ancho-max: 1000px;
+  --margen-lateral: clamp(20px, 6vw, 80px);
+  --espacio-seccion: clamp(96px, 14vh, 160px);
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; background: var(--fondo); }
+
+body {
+  color: var(--texto);
+  font: 400 18px/1.6 var(--sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2 { font-weight: 800; letter-spacing: -0.03em; }
+
+a { color: inherit; }
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--ambar);
+  outline-offset: 3px;
+}
+
+.contenedor { width: min(var(--ancho-max), 100%); margin-inline: auto; }
+
+.saltar {
+  position: absolute;
+  left: -9999px;
+  top: 12px;
+  z-index: 10;
+  padding: 8px 14px;
+  background: var(--texto);
+  color: var(--fondo);
+}
+.saltar:focus { left: 12px; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}

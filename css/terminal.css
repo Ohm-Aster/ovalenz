@@ -1,0 +1,84 @@
+/* ==========================================================
+   Terminal en vivo (fósforo ámbar)
+   ========================================================== */
+
+.terminal {
+  position: relative;
+  border: 1px solid rgba(255, 176, 74, 0.28);
+  border-radius: 14px;
+  overflow: hidden;
+  background: #0A0D11;
+  box-shadow: 0 30px 80px -30px rgba(255, 140, 40, 0.22);
+}
+
+/* líneas de monitor */
+.terminal::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.025) 0 1px, transparent 1px 3px);
+}
+
+.terminal__barra {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 18px;
+  border-bottom: 1px solid rgba(255, 176, 74, 0.18);
+  font: 400 13px var(--mono);
+  color: #B98A52;
+}
+.terminal__barra span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.terminal__pasos { display: flex; gap: 6px; }
+.terminal__pasos button {
+  position: relative;
+  width: 34px;
+  height: 4px;
+  padding: 0;
+  border: 0;
+  border-radius: 2px;
+  overflow: hidden;
+  background: rgba(255, 176, 74, 0.2);
+  cursor: pointer;
+}
+.terminal__pasos button i {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 0;
+  background: var(--ambar);
+  transition: width 0.4s;
+}
+
+.terminal__pantalla {
+  height: 420px;
+  overflow: hidden;
+  padding: 20px 22px;
+  font: 400 15px/1.7 var(--mono);
+  color: #FFD9A8;
+  text-shadow: 0 0 6px rgba(255, 176, 74, 0.45);
+  white-space: pre;
+}
+
+.terminal__pantalla .prompt { color: #7CE0A0; text-shadow: 0 0 6px rgba(124, 224, 160, 0.4); }
+.terminal__pantalla .tenue { color: #9C7A55; text-shadow: none; }
+.terminal__pantalla .ok { color: #7CE0A0; }
+.terminal__pantalla .claro { color: #FFF1DC; }
+
+.cursor {
+  display: inline-block;
+  width: 0.6em;
+  height: 1.1em;
+  vertical-align: -3px;
+  background: var(--ambar);
+  box-shadow: 0 0 8px var(--ambar);
+  animation: parpadeo 1s steps(1) infinite;
+}
+@keyframes parpadeo { 50% { opacity: 0; } }
+
+@media (max-width: 760px) {
+  .terminal__pasos button { width: 20px; }
+  .terminal__pantalla { height: 380px; padding: 14px; font-size: 12px; }
+}
