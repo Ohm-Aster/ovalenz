@@ -1,0 +1,94 @@
+/* ==========================================================
+   ovalenz · trayectoria con año fijo y línea que se llena
+   ========================================================== */
+
+.trayectoria {
+  display: grid;
+  grid-template-columns: minmax(160px, 0.8fr) 2fr;
+  gap: clamp(24px, 5vw, 80px);
+  margin-top: 56px;
+}
+
+.anio {
+  position: sticky;
+  top: 18vh;
+  align-self: start;
+  height: 1.1em;
+  overflow: hidden;
+  font-size: clamp(64px, 9vw, 132px);
+  line-height: 1.1;
+}
+.anio span {
+  display: block;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: var(--ambar);
+  font-variant-numeric: tabular-nums;
+  transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.1, 1), opacity 0.45s;
+}
+.anio span.saliendo { transform: translateY(-40%); opacity: 0; }
+.anio span.entrando { transform: translateY(40%); opacity: 0; transition: none; }
+
+.linea {
+  --avance: 0;
+  position: relative;
+  list-style: none;
+  padding-left: 40px;
+}
+.linea::before,
+.linea::after {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: var(--linea-fuerte);
+}
+.linea::after {
+  background: var(--ambar);
+  box-shadow: 0 0 10px var(--brillo-ambar);
+  transform: scaleY(var(--avance));
+  transform-origin: top;
+}
+
+.linea li { position: relative; padding-bottom: clamp(40px, 7vh, 72px); }
+.linea li::before {
+  content: "";
+  position: absolute;
+  left: -40px;
+  top: 5px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid var(--linea-fuerte);
+  background: var(--fondo-seccion);
+  z-index: 1;
+  transition: border-color 0.3s, background-color 0.3s, box-shadow 0.3s;
+}
+.linea li.alcanzado::before { border-color: var(--ambar); background: var(--ambar); box-shadow: 0 0 14px var(--brillo-ambar); }
+
+.cuando { font: 400 13px var(--mono); color: var(--tenue); }
+.linea h3 { margin-top: 4px; font-size: clamp(24px, 2.6vw, 32px); line-height: 1.15; }
+.linea h3 span { display: block; font-weight: 400; font-size: 0.62em; color: var(--ambar); letter-spacing: 0; }
+.linea li > p:last-child { max-width: 52ch; margin-top: 10px; color: var(--suave); }
+
+.credenciales { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 24px; padding-top: 40px; border-top: 1px solid var(--linea); }
+.credenciales h3 { font: 400 13px var(--mono); color: var(--tenue); letter-spacing: 0; }
+.credenciales ul { list-style: none; margin-top: 8px; }
+.credenciales li { padding: 10px 0; border-bottom: 1px solid var(--linea); font-size: 16px; }
+
+@media (max-width: 820px) {
+  .trayectoria { grid-template-columns: 1fr; }
+  .anio {
+    top: 0;
+    z-index: 2;
+    height: auto;
+    margin-inline: calc(-1 * var(--margen));
+    padding: 6px var(--margen);
+    font-size: 44px;
+    background: var(--fondo-seccion);
+    border-bottom: 1px solid var(--linea);
+  }
+  .credenciales { grid-template-columns: 1fr; }
+}

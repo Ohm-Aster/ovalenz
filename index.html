@@ -1,126 +1,449 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-MX">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Omar Valencia | ovalenz</title>
-  <meta name="description" content="Omar Valencia Cruz, ingeniero en computación. Agentes de IA, automatización de datos, hardware y docencia.">
+  <title>Omar Valencia Cruz | Datos, software e IA</title>
+  <meta name="description" content="Ingeniero en computación. Diseño bases de datos y sistemas con SQL, Python, Java e IA que automatizan el trabajo de varias áreas. Docente desde 2018.">
+  <meta name="author" content="Omar Valencia Cruz">
   <meta name="theme-color" content="#070B10">
   <link rel="canonical" href="https://ovalenz.dev/">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
 
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Omar Valencia | ovalenz">
-  <meta property="og:description" content="Agentes de IA, automatización de datos, hardware y docencia.">
+  <meta property="og:type" content="profile">
+  <meta property="og:locale" content="es_MX">
+  <meta property="og:site_name" content="ovalenz">
+  <meta property="og:title" content="Omar Valencia Cruz | Datos, software e IA">
+  <meta property="og:description" content="Bases de datos, sistemas y automatización con SQL, Python, Java e IA.">
   <meta property="og:url" content="https://ovalenz.dev/">
+  <meta property="og:image" content="https://ovalenz.dev/og.png">
+  <meta name="twitter:card" content="summary_large_image">
 
-  <link rel="preload" href="/fonts/archivo-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/fonts/archivo-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/fonts/jetbrains-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/css/base.css">
-  <link rel="stylesheet" href="/css/secciones.css">
-  <link rel="stylesheet" href="/css/terminal.css">
-  <script type="module" src="/js/main.js"></script>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/secciones.css">
+  <link rel="stylesheet" href="css/flujos.css">
+  <link rel="stylesheet" href="css/trayectoria.css">
+  <link rel="stylesheet" href="css/impresion.css" media="print">
+  <script src="js/lluvia.js" defer></script>
+  <script src="js/flujos.js" defer></script>
+  <script src="js/trayectoria.js" defer></script>
+  <script src="js/contacto.js" defer></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Omar Valencia Cruz",
+    "alternateName": "ovalenz",
+    "url": "https://ovalenz.dev/",
+    "image": "https://ovalenz.dev/img/omar-640.jpg",
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "Universidad Autónoma del Estado de México"
+    },
+    "jobTitle": "Ingeniero de datos y software",
+    "description": "Ingeniero en computación. Diseña bases de datos y sistemas con SQL, Python, Java e IA; docente de programación desde 2018.",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "WTW"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": "Estado de México",
+      "addressCountry": "MX"
+    },
+    "knowsAbout": [
+      "Diseño de bases de datos",
+      "Agentes de IA",
+      "Azure AI Foundry",
+      "n8n",
+      "Análisis de datos",
+      "Power BI",
+      "Power Automate",
+      "Python",
+      "SQL",
+      "Java",
+      "Laravel",
+      "Arduino",
+      "ESP32",
+      "Docencia en programación"
+    ],
+    "hasCredential": [
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Microsoft Certified: Azure AI Fundamentals (AI-900)"
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "AWS Certified Cloud Practitioner (CLF-C02)"
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Google AI Essentials"
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Microsoft Certified: Azure Fundamentals (AZ-900)"
+      }
+    ],
+    "sameAs": [
+      "https://github.com/Ohm-Aster",
+      "https://www.linkedin.com/in/ohm-aster/"
+    ]
+  }
+  </script>
 </head>
 <body>
-  <a class="saltar" href="#ia">Saltar al contenido</a>
-
   <header class="barra">
-    <a class="logo" href="#inicio">o<b>valenz</b></a>
+    <a class="marca" href="#inicio" aria-label="ovalenz, inicio"><svg class="marca__icono" viewBox="2 -4 74 70" aria-hidden="true"><circle cx="20" cy="46" r="13"/><polyline points="42,30 56,60 70,30"/><line class="g1" x1="56" y1="0" x2="56" y2="5"/><line class="g2" x1="56" y1="12" x2="56" y2="19"/><line class="g3" x1="56" y1="26" x2="56" y2="36"/></svg><span>o<b>v</b>alenz</span></a>
     <nav aria-label="Secciones">
-      <a href="#ia">IA</a>
-      <a href="#datos">Datos</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#proceso">Cómo trabajo</a>
+      <a href="#casos">Casos</a>
       <a href="#maker">Maker</a>
-      <a href="#docencia">Docencia</a>
-      <a href="#trabajo">Así trabajo</a>
+      <a href="#trayectoria">Trayectoria</a>
       <a href="#contacto">Contacto</a>
     </nav>
   </header>
 
-  <main>
-    <section id="inicio" class="hero">
+  <main id="inicio">
+    <!-- ============ Hero ============ -->
+    <section class="hero">
       <canvas class="lluvia" aria-hidden="true"></canvas>
       <div class="contenedor hero__texto">
-        <h1>Omar<br>Valencia</h1>
-        <p class="hero__lema">Ingeniero en computación. Construyo agentes de IA, automatizo datos, armo hardware y enseño a hacerlo.</p>
-        <p class="hero__nota">Lo que cae al fondo es el código de esta página.</p>
-      </div>
-    </section>
-
-    <section id="ia" class="seccion">
-      <div class="contenedor">
-        <h2>IA y agentes</h2>
-        <p class="lema">Agentes que hacen el trabajo repetitivo y le dejan la última palabra a una persona.</p>
-        <ul class="filas">
-          <li><span>Agente que actualiza documentos anuales</span><span>Azure AI Foundry</span></li>
-          <li><span>Agentes con aprobación humana en Slack</span><span>n8n local</span></li>
-          <li><span>Oficina virtual de agentes para crear material de cursos</span><span>en construcción</span></li>
-          <li><span>Fundamentos de IA en Azure</span><span>AI-900</span></li>
+        <figure class="hero__foto">
+          <picture>
+            <source type="image/webp" srcset="img/omar-320.webp 320w, img/omar-640.webp 640w" sizes="(max-width: 960px) 112px, 340px">
+            <img src="img/omar-640.jpg" srcset="img/omar-320.jpg 320w, img/omar-640.jpg 640w" sizes="(max-width: 960px) 112px, 340px" width="640" height="800" alt="Omar Valencia Cruz" fetchpriority="high">
+          </picture>
+        </figure>
+        <div class="hero__info">
+        <p class="hero__rol">Ingeniero de datos y software</p>
+        <h1>Omar Valencia</h1>
+        <p class="hero__lema">Convierto procesos manuales en sistemas que trabajan solos.</p>
+        <div class="caminos">
+          <a class="camino" href="#trayectoria">
+            <span class="camino__quien">¿Buscas talento?</span>
+            <span class="camino__que">Mira mi trayectoria y mi CV</span>
+          </a>
+          <a class="camino camino--proyecto" href="#servicios">
+            <span class="camino__quien">¿Tienes un proyecto?</span>
+            <span class="camino__que">Mira lo que puedo hacer por ti</span>
+          </a>
+        </div>
+        <ul class="rapido" aria-label="Perfil rápido">
+          <li><span>Formación</span>Maestría en Ciencias de la Computación</li>
+          <li><span>Hoy</span>Analista de Datos en WTW</li>
+          <li><span>Perfil</span><a href="https://www.linkedin.com/in/ohm-aster/" rel="noopener">LinkedIn</a></li>
+          <li><span>CV</span><a href="cv/CV_OmarValenciaCruz.pdf" download>Descargar PDF</a></li>
         </ul>
+        </div>
       </div>
     </section>
 
-    <section id="datos" class="seccion">
+    <!-- ============ Servicios ============ -->
+    <section id="servicios" class="seccion">
       <div class="contenedor">
-        <h2>Datos</h2>
-        <p class="lema">Reportes que se arman solos y tableros que se entienden en cinco segundos.</p>
-        <ul class="filas">
-          <li><span>Resumen semanal automático con tablero</span><span>Power Automate, Power BI</span></li>
-          <li><span>Reportes de asistencia de personal</span><span>Cronos, Power BI</span></li>
-          <li><span>Limpieza y análisis</span><span>Python, Excel</span></li>
-        </ul>
+        <h2>Qué hago</h2>
+        <p class="lema">Cuatro formas de quitarle trabajo repetitivo a un equipo, siempre con una persona tomando la decisión final.</p>
+
+        <div class="servicios">
+          <article class="servicio">
+            <div class="servicio__texto">
+              <h3>Bases de datos y automatización</h3>
+              <p>Diseño de bases de datos, reportes que se arman solos y puentes entre sistemas, por ejemplo con el software de facturación.</p>
+              <p class="servicio__stack">SQL, Python, Power BI, Power Automate</p>
+            </div>
+            <figure class="flujo" style="--pasos: 4">
+              <ol>
+                <li>Datos de cada área</li>
+                <li>Base de datos</li>
+                <li>Reportes</li>
+                <li>Otros sistemas</li>
+              </ol>
+              <figcaption class="oculto">Flujo de una base de datos que alimenta reportes y otros sistemas</figcaption>
+            </figure>
+          </article>
+
+          <article class="servicio">
+            <div class="servicio__texto">
+              <h3>Agentes de IA</h3>
+              <p>Asistentes que leen documentos, responden preguntas y preparan borradores. Nada sale sin que alguien lo apruebe.</p>
+              <p class="servicio__stack">Azure AI Foundry, n8n, Python</p>
+            </div>
+            <figure class="flujo" style="--pasos: 4">
+              <ol>
+                <li>Tu documento o pregunta</li>
+                <li>Agente</li>
+                <li class="humano">Aprobación humana</li>
+                <li>Resultado</li>
+              </ol>
+              <figcaption class="oculto">Flujo de un agente de IA con aprobación humana</figcaption>
+            </figure>
+          </article>
+
+          <article class="servicio">
+            <div class="servicio__texto">
+              <h3>Desarrollo de software</h3>
+              <p>Aplicaciones web, de escritorio y móviles, de preferencia que funcionen sin internet.</p>
+              <p class="servicio__stack">Java, Python, Laravel, JavaScript, PWA</p>
+            </div>
+            <figure class="flujo" style="--pasos: 4">
+              <ol>
+                <li>Idea</li>
+                <li>Prototipo</li>
+                <li>Pruebas reales</li>
+                <li>Publicada</li>
+              </ol>
+              <figcaption class="oculto">Ruta de desarrollo de una aplicación</figcaption>
+            </figure>
+          </article>
+
+          <article class="servicio">
+            <div class="servicio__texto">
+              <h3>Capacitación</h3>
+              <p>Cursos y talleres de IA, programación y nube para gente que empieza de cero. Cada participante termina con algo funcionando.</p>
+              <p class="servicio__stack">Java, Oracle Cloud, IA agéntica, preparación AI-900</p>
+            </div>
+            <figure class="flujo" style="--pasos: 4">
+              <ol>
+                <li>Diagnóstico</li>
+                <li>Práctica guiada</li>
+                <li>Proyecto propio</li>
+                <li>Equipo autónomo</li>
+              </ol>
+              <figcaption class="oculto">Ruta de una capacitación</figcaption>
+            </figure>
+          </article>
+        </div>
       </div>
     </section>
 
+    <!-- ============ Cómo trabajo ============ -->
+    <section id="proceso" class="seccion seccion--clara">
+      <div class="contenedor">
+        <h2>Cómo trabajo</h2>
+        <p class="lema">Para proyectos por tu cuenta, así va de la primera plática a la entrega.</p>
+        <ol class="pasos">
+          <li><h3>Entender el proceso</h3><p>Platicamos de lo que se repite en tu trabajo y de dónde salen los datos.</p></li>
+          <li><h3>Propuesta</h3><p>Alcance, tiempos y costo por escrito antes de empezar.</p></li>
+          <li><h3>Construcción</h3><p>Avances que puedes probar desde las primeras semanas.</p></li>
+          <li><h3>Entrega y capacitación</h3><p>El sistema funcionando y tu equipo sabiendo usarlo.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ Casos ============ -->
+    <section id="casos" class="seccion">
+      <div class="contenedor">
+        <h2>Casos</h2>
+        <p class="lema">Proyectos reales, contados en corto.</p>
+
+        <article class="caso-destacado">
+          <div class="caso-destacado__texto">
+            <p class="caso__contexto">WTW, 2026, en curso</p>
+            <h3>Sistema de datos para varias áreas</h3>
+            <p>La base de datos y el sistema que concentran los casos de distintas áreas de la empresa. Ahora mismo, el diseño de la base de datos; después vienen los reportes y la conexión con el software de facturación.</p>
+            <p class="servicio__stack">SQL, diseño relacional, Python</p>
+          </div>
+          <figure class="flujo" style="--pasos: 4">
+            <ol>
+              <li>Casos de cada área</li>
+              <li>Base de datos</li>
+              <li>Reportes</li>
+              <li>Software de facturación</li>
+            </ol>
+            <figcaption class="oculto">Flujo del sistema de datos para varias áreas</figcaption>
+          </figure>
+        </article>
+
+        <ul class="casos-lista">
+          <li>
+            <div><p class="caso__contexto">WTW, 2026</p><h3>Agente que actualiza documentos anuales</h3></div>
+            <dl>
+              <dt>Problema</dt><dd>Poner al día cada año un conjunto de documentos: largo y fácil de equivocar.</dd>
+              <dt>Solución</dt><dd>Un agente en Azure AI Foundry compara cada documento con su versión anterior y redacta un borrador.</dd>
+              <dt>Resultado</dt><dd>El equipo revisa borradores en lugar de empezar de cero; nada se publica sin aprobación.</dd>
+            </dl>
+          </li>
+          <li>
+            <div><p class="caso__contexto">Curso de IA agéntica para Intel, INFOTEC</p><h3>Agente de atención escolar con aprobación en Slack</h3></div>
+            <dl>
+              <dt>Problema</dt><dd>Las mismas preguntas una y otra vez, sin querer un bot que responda solo.</dd>
+              <dt>Solución</dt><dd>Agente en n8n local con Docker: prepara la respuesta, la manda a Slack y sale por correo cuando alguien la aprueba.</dd>
+              <dt>Resultado</dt><dd>Sin servicios de pago; es el ejemplo base del proyecto final del curso.</dd>
+            </dl>
+          </li>
+          <li>
+            <div><p class="caso__contexto">Proyecto propio</p><h3>Descarga masiva de facturas del SAT</h3></div>
+            <dl>
+              <dt>Problema</dt><dd>Bajar cientos de facturas desde el portal se hace una por una.</dd>
+              <dt>Solución</dt><dd>App de escritorio en Python y PyQt6 que usa directo el servicio web del SAT.</dd>
+              <dt>Resultado</dt><dd>Descarga masiva sin entrar al portal ni depender de terceros.</dd>
+            </dl>
+          </li>
+        </ul>
+
+        <p class="tambien">También: certificados veterinarios que funcionan sin internet (PWA) y un punto de venta offline-first para Android.</p>
+      </div>
+    </section>
+
+    <!-- ============ Maker ============ -->
     <section id="maker" class="seccion">
       <div class="contenedor">
         <h2>Maker</h2>
         <p class="lema">Cuando el código sale de la pantalla: se mueve, mide y se imprime.</p>
-        <ul class="filas">
-          <li><span>Robótica</span><span>Arduino</span></li>
-          <li><span>Electrónica e IoT</span><span>sensores, microcontroladores</span></li>
-          <li><span>Impresión 3D</span><span>diseño y calibración</span></li>
+
+        <article class="caso-destacado maker__destacado">
+          <div class="caso-destacado__texto">
+            <h3>Red LoRa de varios emisores</h3>
+            <p>Nodos con GPS que envían su posición por radio a largas distancias y la registran en una hoja de cálculo como backend ligero, sin servidor propio.</p>
+            <p class="servicio__stack">ESP32, LoRa E220, GPS</p>
+          </div>
+          <figure class="flujo" style="--pasos: 4">
+            <ol>
+              <li>Nodo con GPS</li>
+              <li>ESP32</li>
+              <li>Radio LoRa</li>
+              <li>Hoja de cálculo</li>
+            </ol>
+            <figcaption class="oculto">Flujo de datos de la red LoRa</figcaption>
+          </figure>
+        </article>
+
+        <ul class="maker__lista">
+          <li>
+            <h3>Domótica con IoT</h3>
+            <p>Automatización del hogar con sensores, protocolos abiertos y modelos ligeros en el propio dispositivo.</p>
+            <span>ESP32, MQTT, Matter, TensorFlow Lite</span>
+          </li>
+          <li>
+            <h3>Robótica</h3>
+            <p>Prototipos con sensores y actuadores, del circuito al código.</p>
+            <span>Arduino</span>
+          </li>
+          <li>
+            <h3>Impresión 3D</h3>
+            <p>Diseño, calibración e impresión de piezas y carcasas para mis proyectos.</p>
+            <span>PETG, ajuste de primera capa y temperatura</span>
+          </li>
         </ul>
       </div>
     </section>
 
-    <section id="docencia" class="seccion">
+    <!-- ============ Trayectoria ============ -->
+    <section id="trayectoria" class="seccion">
       <div class="contenedor">
-        <h2>Docencia</h2>
-        <p class="lema">Desde 2018 enseño a programar a gente que empieza de cero.</p>
-        <div class="cifras">
-          <div><b data-contar="98">98</b><span>alumnos en IA agéntica para Intel</span></div>
-          <div><b data-contar="146">146</b><span>alumnos en Java Fundamentals</span></div>
-          <div><b data-contar="101">101</b><span>alumnos en Oracle Cloud</span></div>
-        </div>
-      </div>
-    </section>
+        <h2>Trayectoria</h2>
+        <p class="lema">Del aula y el makerspace a construir agentes de IA. He enseñado con programas de Intel, Oracle Academy y Microsoft, y en el Tecnológico Nacional de México.</p>
 
-    <section id="trabajo" class="seccion">
-      <div class="contenedor">
-        <h2>Así trabajo</h2>
-        <p class="lema">Una sesión en vivo de lo que hago: agentes, datos, hardware y clases.</p>
-        <div class="terminal" data-terminal>
-          <div class="terminal__barra">
-            <span data-terminal-titulo>omar@ovalenz</span>
-            <div class="terminal__pasos" data-terminal-pasos aria-label="Sesiones"></div>
+        <div class="trayectoria">
+          <div class="anio" aria-hidden="true"><span data-anio>2008</span></div>
+          <ol class="linea" data-linea>
+            <li data-anio-etapa="2008">
+              <p class="cuando">2008 – 2015</p>
+              <h3>Ingeniería y maestría <span>UAEMéx</span></h3>
+              <p>Ingeniería en Computación y Maestría en Ciencias de la Computación. Estancias de investigación en la BUAP en minería de textos y desarrollo web.</p>
+            </li>
+            <li data-anio-etapa="2015">
+              <p class="cuando">2015 – 2016</p>
+              <h3>Coordinador de licitaciones <span>MC Multicomercio</span></h3>
+              <p>Propuestas técnico-económicas y seguimiento de licitaciones hasta la firma del contrato.</p>
+            </li>
+            <li data-anio-etapa="2016">
+              <p class="cuando">2016 – 2018</p>
+              <h3>Líder Makerspace <span>Red de Innovación y Aprendizaje</span></h3>
+              <p>Cursos de diseño web, programación, robótica con Arduino, Blender e impresión 3D. Instalación y calibración de impresoras 3D, CNC láser y plotter de corte.</p>
+            </li>
+            <li data-anio-etapa="2018">
+              <p class="cuando">2018 – 2025</p>
+              <h3>Docente <span>TESOEM</span></h3>
+              <p>Siete años frente a grupo en carreras de ingeniería.</p>
+            </li>
+            <li data-anio-etapa="2025">
+              <p class="cuando">Abril – diciembre de 2025</p>
+              <h3>Reportes de asistencia <span>MC Multicomercio</span></h3>
+              <p>De regreso, ahora con datos: reportes automáticos con Cronos, Power Automate y Power BI.</p>
+            </li>
+            <li data-anio-etapa="2025">
+              <p class="cuando">Desde septiembre de 2025</p>
+              <h3>Instructor virtual <span>INFOTEC</span></h3>
+              <p>Imparto Java Fundamentals y Oracle Cloud Infrastructure con Oracle Academy, Introducción a la IA agéntica para Intel y cursos de preparación para la certificación AI-900 de Microsoft.</p>
+            </li>
+            <li data-anio-etapa="2026">
+              <p class="cuando">Enero – junio de 2026</p>
+              <h3>Solicitudes de personal <span>Alcom Alternativa Comercial</span></h3>
+              <p>Seguimiento de solicitudes de personal con Worky y Excel.</p>
+            </li>
+            <li data-anio-etapa="2026">
+              <p class="cuando">Desde julio de 2026</p>
+              <h3>Analista de Datos <span>WTW</span></h3>
+              <p>Diseño de la base de datos y del sistema que concentra los casos de varias áreas, con reportes y conexión al software de facturación. También un agente en Azure AI Foundry para documentos anuales.</p>
+            </li>
+            <li data-anio-etapa="Hoy">
+              <p class="cuando">Hoy</p>
+              <h3>Docente <span>TESCHA, TecNM campus Chalco</span></h3>
+              <p>Programación orientada a objetos en Java, Laravel, redes y métodos numéricos.</p>
+            </li>
+          </ol>
+        </div>
+
+        <div class="credenciales">
+          <div>
+            <h3>Certificaciones</h3>
+            <ul>
+              <li>Microsoft Azure AI Fundamentals (AI-900)</li>
+              <li>AWS Certified Cloud Practitioner (CLF-C02)</li>
+              <li>Google AI Essentials</li>
+              <li>Microsoft Azure Fundamentals (AZ-900)</li>
+            </ul>
           </div>
-          <div class="terminal__pantalla" data-terminal-pantalla></div>
+          <div>
+            <h3>Herramientas</h3>
+            <ul>
+              <li>IA: Azure AI Foundry, n8n, agentes</li>
+              <li>Datos: SQL, diseño de bases de datos, Python, Power BI, Power Automate</li>
+              <li>Desarrollo: Java, Laravel, JavaScript, PWA, PyQt6</li>
+              <li>Nube: Azure, AWS, Oracle Cloud</li>
+              <li>Hardware: Arduino, ESP32, LoRa, impresión 3D</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
 
+    <!-- ============ Contacto ============ -->
     <section id="contacto" class="seccion contacto">
       <div class="contenedor">
         <h2>Hablemos</h2>
-        <p class="lema">Agentes de IA, automatización de datos, clases o un proyecto con hardware.</p>
-        <a class="contacto__enlace" href="https://github.com/Ohm-Aster" target="_blank" rel="noopener">github.com/Ohm-Aster</a>
+        <div class="contacto__caminos">
+          <div class="contacto__camino">
+            <h3>¿Buscas talento?</h3>
+            <p>Te comparto mi CV y platicamos del puesto.</p>
+            <div class="acciones">
+              <a class="boton boton--principal" href="https://wa.me/525515353273?text=Hola%20Omar%2C%20vi%20tu%20p%C3%A1gina%20y%20me%20interesa%20tu%20perfil" rel="noopener">WhatsApp</a>
+              <a class="boton" href="cv/CV_OmarValenciaCruz.pdf" download>Descargar CV</a>
+            </div>
+          </div>
+          <div class="contacto__camino">
+            <h3>¿Tienes un proyecto?</h3>
+            <p>Cuéntame qué se repite en tu trabajo y te digo cómo lo resolvería.</p>
+            <div class="acciones">
+              <a class="boton boton--principal" href="https://wa.me/525515353273?text=Hola%20Omar%2C%20tengo%20un%20proyecto" rel="noopener">WhatsApp</a>
+            </div>
+          </div>
+        </div>
+        <ul class="contacto__datos">
+          <li><a data-correo="om_art1721|hotmail.com">om_art1721 (arroba) hotmail.com</a></li>
+          <li><a href="https://www.linkedin.com/in/ohm-aster/" rel="noopener">linkedin.com/in/ohm-aster</a></li>
+          <li><a href="https://github.com/Ohm-Aster" rel="noopener">github.com/Ohm-Aster</a></li>
+          <li>Estado de México</li>
+        </ul>
       </div>
     </section>
   </main>
 
   <footer class="pie">
-    <div class="contenedor">ovalenz.dev, Estado de México</div>
+    <div class="contenedor">ovalenz.dev</div>
   </footer>
 </body>
 </html>

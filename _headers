@@ -12,3 +12,9 @@
 
 /js/*
   Cache-Control: public, max-age=86400, must-revalidate
+
+/img/*
+  Cache-Control: public, max-age=2592000
+
+/cv/*
+  Cache-Control: public, max-age=3600, must-revalidate

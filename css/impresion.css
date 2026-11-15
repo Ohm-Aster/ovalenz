@@ -1,0 +1,67 @@
+/* ==========================================================
+   ovalenz · versión impresa (CV): solo lo que sirve en papel
+   ========================================================== */
+
+@page { size: letter; margin: 14mm 16mm; }
+
+body { background: #fff; color: #000; font-size: 10.5pt; line-height: 1.4; }
+
+.barra, .lluvia, .caminos, .flujo, .acciones, .anio, .pie, #casos .tambien { display: none !important; }
+.hero, .seccion { min-height: 0; padding: 0; background: none; border: 0; }
+.hero::after { display: none; }
+.hero__rol, .hero__lema, .lema, .servicio p, .caso dd, .linea li > p:last-child { color: #000; }
+
+.hero h1 { max-width: none; margin-top: 2px; font-size: 22pt; line-height: 1.1; }
+.hero__lema { margin-top: 4px; font-size: 10.5pt; }
+
+.seccion { margin-top: 12pt; }
+.seccion > .contenedor > h2 { font-size: 11pt; letter-spacing: 0; padding-bottom: 3px; border-bottom: 1px solid #000; }
+.lema { display: none; }
+
+.servicios, .casos-lista, .maker__lista { display: block; margin-top: 6px; }
+.servicio, .caso-destacado, .casos-lista > li, .maker__lista li { display: block; padding: 4px 0; border: 0; background: none; break-inside: avoid; }
+.servicio h3, .caso-destacado h3, .casos-lista h3 { font-size: 11pt; margin: 0; }
+.servicio p, .caso-destacado p, .casos-lista dd { margin: 0; font-size: 10pt; color: #000; }
+.servicio__stack, .caso__contexto, .casos-lista dt, .cuando { color: #444 !important; font-size: 9pt; }
+.casos-lista dl { display: block; margin-top: 2px; }
+.maker__lista li, .maker__lista li + li { padding: 3px 0; border: 0; }
+#proceso, .rapido button, .rapido li:nth-child(4) { display: none !important; }
+.rapido { margin-top: 4px; padding-top: 0; border: 0; gap: 0 18px; }
+.rapido span { color: #444; }
+.rapido a { color: #000; text-decoration: none; }
+.rapido a::after { content: ": linkedin.com/in/ohm-aster"; }
+
+.trayectoria { display: block; margin-top: 6px; }
+.linea { padding: 0; display: flex; flex-direction: column-reverse; } /* en el CV, lo más reciente primero */
+.linea::before, .linea::after, .linea li::before { display: none; }
+.linea li { padding: 4px 0; break-inside: avoid; }
+.linea h3 { font-size: 11pt; }
+.linea h3 span { display: inline; color: #000; font-size: 1em; }
+.linea h3 span::before { content: ", "; }
+
+.credenciales { margin-top: 6px; padding-top: 6px; gap: 18px; }
+.credenciales li { padding: 2px 0; border: 0; font-size: 10pt; }
+
+.contacto__caminos { display: none; }
+.contacto__datos { margin-top: 4px; color: #000; }
+.contacto__datos a { color: #000; }
+.contacto__datos::before { content: "WhatsApp: 55 1535 3273"; }
+.caminos, .hero::after { display: none; }
+
+/* en el CV primero va el contacto y la trayectoria; los servicios al final */
+main { display: flex; flex-direction: column; }
+.hero { order: 0; }
+#contacto { order: 1; margin-top: 4px; }
+#contacto h2 { display: none; }
+#trayectoria { order: 2; }
+#casos { order: 3; }
+#maker { order: 4; }
+#servicios { order: 5; }
+#proceso { order: 6; }
+.maker__lista p, .maker__lista span { color: #000 !important; margin: 0; font-size: 10pt; }
+.maker__lista h3 { font-size: 11pt; }
+
+/* en el CV va el nombre completo y LinkedIn una sola vez */
+.hero h1::after { content: " Cruz"; }
+.rapido li:nth-child(3) { display: none; }
+.hero__texto { display: block; } .hero__foto { display: none; }

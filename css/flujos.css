@@ -1,0 +1,90 @@
+/* ==========================================================
+   ovalenz · diagramas de flujo con pulso
+   Cada <li> es una etapa. Un pulso viaja de una etapa a la
+   siguiente y la etapa donde está se ilumina. El script solo
+   agrega .activo mientras el diagrama está en pantalla.
+   Horizontal en escritorio, vertical en celular.
+   ========================================================== */
+
+.flujo {
+  --duracion-paso: 0.85s;
+  --ciclo: calc(var(--pasos) * var(--duracion-paso) + 1.4s);
+  --separacion: 34px;
+}
+
+.flujo ol { list-style: none; display: flex; gap: var(--separacion); }
+
+.flujo li {
+  position: relative;
+  flex: 1;
+  display: grid;
+  place-items: center;
+  min-height: 74px;
+  padding: 12px;
+  border: 1px solid var(--linea-fuerte);
+  border-radius: 12px;
+  background: var(--fondo);
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.25;
+  text-align: center;
+}
+.flujo li.humano { border-style: dashed; border-color: rgba(124, 224, 160, 0.55); color: var(--verde); }
+
+/* conector */
+.flujo li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  width: var(--separacion);
+  height: 2px;
+  background: var(--linea-fuerte);
+}
+
+/* pulso */
+.flujo li:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  top: calc(50% - 4px);
+  left: 100%;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--ambar);
+  box-shadow: 0 0 12px var(--ambar);
+  opacity: 0;
+  z-index: 1;
+}
+
+.flujo.activo li { animation: etapa var(--ciclo) infinite; animation-delay: calc(var(--i) * var(--duracion-paso)); }
+.flujo.activo li:not(:last-child)::before {
+  animation: pulso-horizontal var(--ciclo) infinite;
+  animation-delay: calc(var(--i) * var(--duracion-paso) + var(--duracion-paso) * 0.45);
+}
+
+@keyframes etapa {
+  0%, 16% { border-color: var(--ambar); box-shadow: 0 0 22px -6px var(--brillo-ambar); }
+  28%, 100% { border-color: var(--linea-fuerte); box-shadow: none; }
+}
+@keyframes pulso-horizontal {
+  0% { opacity: 0; transform: translateX(0); }
+  3% { opacity: 1; }
+  11% { opacity: 1; transform: translateX(calc(var(--separacion) - 8px)); }
+  14%, 100% { opacity: 0; transform: translateX(calc(var(--separacion) - 8px)); }
+}
+@keyframes pulso-vertical {
+  0% { opacity: 0; transform: translateY(0); }
+  3% { opacity: 1; }
+  11% { opacity: 1; transform: translateY(calc(var(--separacion) - 8px)); }
+  14%, 100% { opacity: 0; transform: translateY(calc(var(--separacion) - 8px)); }
+}
+
+@media (max-width: 700px) {
+  .flujo { --separacion: 22px; }
+  .flujo ol { flex-direction: column; }
+  .flujo li { min-height: 0; padding: 12px 14px; place-items: center start; text-align: left; }
+  .flujo li:not(:last-child)::after { top: 100%; left: 26px; width: 2px; height: var(--separacion); }
+  .flujo li:not(:last-child)::before { top: 100%; left: 23px; }
+  .flujo.activo li:not(:last-child)::before { animation-name: pulso-vertical; }
+}

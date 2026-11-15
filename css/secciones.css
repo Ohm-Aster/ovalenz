@@ -1,8 +1,8 @@
 /* ==========================================================
-   Barra, hero y secciones de contenido
+   ovalenz · barra, hero, servicios, casos y contacto
    ========================================================== */
 
-/* ---------- Barra superior ---------- */
+/* ---------- Barra ---------- */
 .barra {
   position: fixed;
   inset: 0 0 auto;
@@ -10,25 +10,29 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px var(--margen-lateral);
-  background: linear-gradient(rgba(7, 11, 16, 0.92), rgba(7, 11, 16, 0));
+  padding: 16px var(--margen);
+  background: rgba(7, 11, 16, 0.82);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--linea);
 }
-
-.logo {
-  font: 400 17px var(--mono);
-  text-decoration: none;
+.marca { display: inline-flex; align-items: center; gap: 10px; font: 800 20px var(--sans); letter-spacing: -0.01em; color: var(--texto); text-decoration: none; }
+.marca b { color: var(--ambar); font-weight: 800; }
+.marca__icono { width: 38px; height: 36px; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.marca__icono circle { stroke: var(--texto); stroke-width: 6; }
+.marca__icono polyline { stroke: var(--ambar); stroke-width: 6; }
+.marca__icono line { stroke: var(--ambar); stroke-width: 4; }
+.marca__icono .g1 { opacity: 0.35; }
+.marca__icono .g2 { opacity: 0.65; }
+/* La lluvia cae una vez al cargar y se queda en su lugar */
+@media (prefers-reduced-motion: no-preference) {
+  .marca__icono line { animation: caer 0.9s ease-out both; }
+  .marca__icono .g2 { animation-delay: 0.12s; }
+  .marca__icono .g3 { animation-delay: 0.24s; }
 }
-.logo b { color: var(--ambar); font-weight: 400; }
-
-.barra nav { display: flex; gap: 24px; }
-.barra nav a {
-  color: var(--tenue);
-  font-size: 15px;
-  text-decoration: none;
-  transition: color 0.2s;
-}
-.barra nav a:hover,
-.barra nav a[aria-current="true"] { color: var(--texto); }
+@keyframes caer { from { transform: translateY(-14px); opacity: 0; } }
+.barra nav { display: flex; gap: 26px; }
+.barra nav a { color: var(--tenue); font-size: 15px; text-decoration: none; transition: color 0.2s; }
+.barra nav a:hover { color: var(--texto); }
 
 /* ---------- Hero ---------- */
 .hero {
@@ -37,120 +41,192 @@
   min-height: 100svh;
   display: grid;
   align-items: center;
-  padding: 120px var(--margen-lateral) 80px;
+  padding: 120px var(--margen) 72px;
   overflow: hidden;
 }
+.lluvia { position: absolute; inset: 0; width: 100%; height: 100%; }
 
-.lluvia {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-}
-
-/* oscurece el centro y funde la lluvia con la siguiente sección */
+/* oscurece donde va el texto, da un halo cálido y funde con la siguiente sección */
 .hero::after {
   content: "";
   position: absolute;
   inset: 0;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 70% 60% at 40% 50%, rgba(7, 11, 16, 0.85), rgba(7, 11, 16, 0.2) 75%),
-    linear-gradient(transparent 70%, var(--fondo-seccion));
+    radial-gradient(ellipse 45% 40% at 28% 52%, rgba(255, 150, 40, 0.10), transparent 70%),
+    radial-gradient(ellipse 72% 62% at 35% 50%, rgba(7, 11, 16, 0.9), rgba(7, 11, 16, 0.25) 78%),
+    linear-gradient(transparent 72%, var(--fondo-seccion));
 }
 
-.hero__texto { position: relative; z-index: 1; }
-
-.hero h1 { font-size: clamp(64px, 13vw, 190px); line-height: 0.88; }
-
-.hero__lema {
-  max-width: 36ch;
-  margin-top: 28px;
-  font-size: clamp(18px, 2vw, 22px);
+.hero__texto { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 340px; grid-template-areas: "info foto"; gap: 56px; align-items: center; }
+.hero__info { grid-area: info; }
+.hero__foto { grid-area: foto; margin: 0; }
+.hero__foto img { display: block; width: 100%; height: auto; border-radius: 18px; outline: 1px solid rgba(255, 255, 255, 0.12); outline-offset: -1px; }
+@media (max-width: 960px) {
+  .hero__texto { grid-template-columns: 1fr; grid-template-areas: "foto" "info"; gap: 24px; }
+  .hero__foto { width: 112px; }
+  .hero__foto img { aspect-ratio: 1; object-fit: cover; object-position: 50% 15%; border-radius: 50%; }
 }
+.hero__rol { font: 400 15px var(--mono); color: var(--ambar); }
+.hero h1 { margin-top: 12px; font-size: clamp(48px, 7.2vw, 104px); line-height: 0.95; letter-spacing: -0.04em; }
+.hero__lema { max-width: 40ch; margin-top: 28px; font-size: clamp(18px, 2vw, 22px); color: var(--suave); }
 
-.hero__nota {
-  margin-top: 48px;
-  font: 400 14px var(--mono);
-  color: var(--tenue);
-}
-
-/* ---------- Secciones ---------- */
-.seccion {
-  padding: var(--espacio-seccion) var(--margen-lateral);
-  background: var(--fondo-seccion);
-  border-top: 1px solid var(--linea);
-}
-
-.seccion h2 {
-  font-size: clamp(44px, 7vw, 88px);
-  line-height: 0.95;
-  margin-bottom: 24px;
-}
-
-.lema {
-  max-width: 34ch;
-  margin-bottom: 40px;
-  font-size: clamp(19px, 2vw, 24px);
-  line-height: 1.45;
-}
-
-.filas { list-style: none; border-top: 1px solid var(--linea); }
-.filas li {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 24px;
-  padding: 16px 0;
-  border-bottom: 1px solid var(--linea);
-}
-.filas li span:last-child {
-  color: var(--tenue);
-  font: 400 14px var(--mono);
-  text-align: right;
-  white-space: nowrap;
-}
-
-.cifras {
+.caminos { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 40px; }
+.camino {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: clamp(16px, 3vw, 40px);
-}
-.cifras div { border-top: 1px solid var(--linea); padding-top: 14px; }
-.cifras b {
-  display: block;
-  font-size: clamp(48px, 7vw, 88px);
-  line-height: 1;
-  letter-spacing: -0.03em;
-  color: var(--ambar);
-  font-variant-numeric: tabular-nums;
-}
-.cifras span { color: var(--tenue); font-size: 15px; }
-
-/* ---------- Contacto y pie ---------- */
-.contacto__enlace {
-  font-weight: 800;
-  font-size: clamp(30px, 5vw, 60px);
-  line-height: 1.1;
-  letter-spacing: -0.02em;
+  gap: 2px;
+  min-width: 240px;
+  padding: 16px 20px;
+  border: 1px solid var(--linea-fuerte);
+  border-radius: var(--radio);
+  background: rgba(17, 24, 33, 0.7);
+  backdrop-filter: blur(6px);
   text-decoration: none;
-  border-bottom: 3px solid var(--ambar);
-  transition: color 0.2s;
+  transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
 }
-.contacto__enlace:hover { color: var(--ambar); }
+.camino:hover { border-color: var(--ambar); box-shadow: 0 0 32px -6px var(--brillo-ambar); transform: translateY(-2px); }
+.camino__quien { font-weight: 800; font-size: 19px; }
+.camino__que { color: var(--tenue); font-size: 15px; }
+.camino--proyecto { background: var(--ambar); border-color: var(--ambar); color: var(--fondo); }
+.camino--proyecto .camino__que { color: rgba(7, 11, 16, 0.7); }
 
-.pie {
-  padding: 32px var(--margen-lateral);
+/* perfil rápido para reclutadores */
+.rapido {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 36px;
+  margin-top: 36px;
+  padding-top: 20px;
+  border-top: 1px solid var(--linea);
+  font-size: 15px;
+}
+.rapido li { display: grid; }
+.rapido span { font: 400 12px var(--mono); color: var(--tenue); }
+.rapido a, .rapido button {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--ambar);
+  font: inherit;
+  text-align: left;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+/* ---------- Sección genérica ---------- */
+.seccion {
+  padding: clamp(88px, 14vh, 160px) var(--margen);
   background: var(--fondo-seccion);
   border-top: 1px solid var(--linea);
-  font: 400 13px var(--mono);
-  color: var(--tenue);
 }
+.seccion > .contenedor > h2 { font-size: clamp(44px, 6.5vw, 88px); line-height: 0.95; letter-spacing: -0.035em; }
+.lema { max-width: 46ch; margin-top: 20px; font-size: clamp(18px, 1.9vw, 22px); color: var(--suave); }
+
+/* ---------- Servicios ---------- */
+.servicios { display: grid; gap: 18px; margin-top: 48px; }
+.servicio {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.8fr) 1.4fr;
+  gap: clamp(24px, 4vw, 56px);
+  align-items: center;
+  padding: clamp(24px, 3vw, 36px);
+  border: 1px solid var(--linea);
+  border-radius: calc(var(--radio) + 4px);
+  background: linear-gradient(180deg, var(--superficie), rgba(17, 24, 33, 0.4));
+  transition: border-color 0.3s;
+}
+.servicio:hover { border-color: var(--linea-fuerte); }
+.servicio h3 { font-size: clamp(26px, 2.6vw, 34px); line-height: 1.05; }
+.servicio p { margin-top: 10px; color: var(--suave); }
+.servicio__stack { font: 400 13px var(--mono); color: var(--ambar) !important; }
+
+/* ---------- Casos (editorial, sin tarjetas) ---------- */
+.caso-destacado {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.8fr) 1.4fr;
+  gap: clamp(24px, 4vw, 56px);
+  align-items: center;
+  margin-top: 48px;
+  padding-block: 32px;
+  border-top: 2px solid var(--ambar);
+}
+.caso-destacado h3 { margin-top: 8px; font-size: clamp(28px, 3vw, 38px); line-height: 1.05; }
+.caso-destacado p { margin-top: 10px; color: var(--suave); }
+.caso__contexto { font: 400 13px var(--mono); color: var(--tenue) !important; }
+
+.casos-lista { list-style: none; margin-top: 16px; }
+.casos-lista > li {
+  display: grid;
+  grid-template-columns: minmax(240px, 0.8fr) 1.4fr;
+  gap: clamp(24px, 4vw, 56px);
+  padding-block: 28px;
+  border-top: 1px solid var(--linea);
+}
+.casos-lista h3 { margin-top: 6px; font-size: 22px; line-height: 1.2; }
+.casos-lista dl { display: grid; grid-template-columns: 96px 1fr; gap: 6px 16px; }
+.casos-lista dt { font: 400 13px var(--mono); color: var(--ambar); padding-top: 3px; }
+.casos-lista dd { color: var(--suave); font-size: 16px; line-height: 1.5; }
+.tambien { max-width: 70ch; margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--linea); color: var(--tenue); }
+
+/* ---------- Maker (columnas, sin cajas) ---------- */
+.maker__lista { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 8px; border-top: 1px solid var(--linea); }
+.maker__lista li { padding: 28px 28px 8px 0; }
+.maker__lista li + li { padding-left: 28px; border-left: 1px solid var(--linea); }
+.maker__lista h3 { font-size: 22px; line-height: 1.2; }
+.maker__lista p { margin-top: 8px; color: var(--suave); font-size: 16px; line-height: 1.5; }
+.maker__lista span { display: block; margin-top: 12px; font: 400 13px var(--mono); color: var(--ambar); }
+
+/* ---------- Cómo trabajo (sección clara para cambiar el ritmo) ---------- */
+.seccion--clara { background: #ECEFF3; color: #0B1118; border-top: 0; }
+.seccion--clara .lema { color: #3A4553; }
+.pasos { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; margin-top: 56px; counter-reset: paso; }
+.pasos li { position: relative; padding-top: 72px; counter-increment: paso; }
+.pasos li::before {
+  content: counter(paso);
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 56px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: #C77412;
+}
+/* línea que une los pasos */
+.pasos li::after { content: ""; position: absolute; top: 26px; left: 52px; right: -28px; height: 2px; background: rgba(11, 17, 24, 0.15); }
+.pasos li:last-child::after { display: none; }
+.pasos h3 { font-size: 22px; line-height: 1.2; }
+.pasos p { margin-top: 8px; color: #3A4553; font-size: 16px; line-height: 1.5; }
+
+/* ---------- Contacto ---------- */
+.contacto__caminos { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 40px; }
+.contacto__camino { padding: 32px; border: 1px solid var(--linea); border-radius: calc(var(--radio) + 4px); background: var(--superficie); }
+.contacto__camino h3 { font-size: 28px; }
+.contacto__camino p { margin: 8px 0 22px; color: var(--suave); }
+.contacto__datos { list-style: none; display: flex; flex-wrap: wrap; gap: 10px 32px; margin-top: 32px; font: 400 15px var(--mono); color: var(--tenue); }
+.contacto__datos a { text-decoration: none; color: var(--texto); }
+.contacto__datos a:hover { color: var(--ambar); }
+
+.pie { padding: 28px var(--margen); background: var(--fondo-seccion); border-top: 1px solid var(--linea); font: 400 13px var(--mono); color: var(--tenue); }
 
 /* ---------- Pantallas chicas ---------- */
+@media (max-width: 960px) {
+  .servicio, .caso-destacado, .casos-lista > li { grid-template-columns: 1fr; }
+  .maker__lista { grid-template-columns: 1fr; }
+  .maker__lista li, .maker__lista li + li { padding: 22px 0 6px; border-left: 0; border-top: 1px solid var(--linea); }
+  .maker__lista li:first-child { border-top: 0; }
+  .pasos { grid-template-columns: 1fr 1fr; }
+  .pasos li::after { display: none; }
+}
 @media (max-width: 760px) {
   .barra nav { display: none; }
-  .filas li { flex-direction: column; gap: 4px; }
-  .filas li span:last-child { text-align: left; white-space: normal; }
-  .cifras { grid-template-columns: 1fr; }
+  .camino { min-width: 0; flex: 1 1 100%; }
+  .contacto__caminos { grid-template-columns: 1fr; }
+  .pasos { grid-template-columns: 1fr; gap: 20px; }
+  .pasos li { padding: 0 0 0 64px; }
+  .pasos li::before { font-size: 40px; }
+  .casos-lista dl { grid-template-columns: 1fr; gap: 0; }
+  .casos-lista dd { margin-bottom: 10px; }
 }
